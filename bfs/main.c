@@ -82,10 +82,11 @@ void bfs(struct Item *pItem, Queue *pQueue, int level, int *distance, int *dista
     }
 
 }
+char *FILE_NAME = "C:\\Users\\russi\\CLionProjects\\grafos2\\files\\bridge.txt";
 
 int main() {
     int edgesSize;
-    LinkedList *list = loadFile(&edgesSize, 1);
+    LinkedList *list = loadFile(FILE_NAME, &edgesSize, 1);
     struct Item *current = list->start;
     Queue *executionQueue = allocateQueue();
     int distance;

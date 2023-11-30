@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(dfs dfs/main.c)
 add_executable(bfs bfs/main.c common.h)
+add_executable(bridges bridges/main.c common.h)

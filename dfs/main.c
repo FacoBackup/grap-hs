@@ -36,10 +36,11 @@ void dfs(Item *current, int depth, int *isCyclical, int *isBipartite, int color)
         currentChild = currentChild->next;
     }
 }
-
+char *FILE_NAME = "C:\\Users\\russi\\CLionProjects\\grafos2\\files\\tree.txt";
 int main() {
     int edgesSize;
-    LinkedList *graph = loadFile(&edgesSize, 0);
+
+    LinkedList *graph = loadFile(FILE_NAME, &edgesSize, 1);
     if (graph == NULL) {
         printf("FILE NOT FOUND");
         return 0;

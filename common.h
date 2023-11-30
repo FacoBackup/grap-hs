@@ -1,10 +1,5 @@
-//
-// Created by russi on 9/27/2023.
-//
-
 #ifndef GRAFOS2_COMMON_H
 #define GRAFOS2_COMMON_H
-char *FILE_NAME = "C:\\Users\\russi\\CLionProjects\\grafos2\\files\\tree.txt";
 
 typedef struct Item {
     struct Vertex *value;
@@ -24,6 +19,10 @@ typedef struct Vertex {
     int color;
     int value;
     struct Vertex *firstVisit;
+
+    int lowTime;
+    int insertionTime;
+
 } Vertex;
 
 
@@ -97,7 +96,7 @@ Item *searchByValue(LinkedList *pList, int value) {
     return NULL;
 }
 
-LinkedList *loadFile(int *edgesSize, int bidirectional) {
+LinkedList *loadFile(char* FILE_NAME, int *edgesSize, int bidirectional) {
     FILE *file = fopen(FILE_NAME, "r");
     if (file == NULL) {
         return NULL;
@@ -131,11 +130,12 @@ LinkedList *loadFile(int *edgesSize, int bidirectional) {
         v1Neighbours->value = v2Item->value;
 
         if (bidirectional == 1) {
-            Item *v2Neighbours = allocateListItem(v2Item->value->neighbours);
-            v2Neighbours->value = v1Item->value;
+            Item *newNeighbour = allocateListItem(v2Item->value->neighbours);
+            newNeighbour->value = v1Item->value;
         }
         *edgesSize += 1;
     }
     return pList;
 }
+
 #endif //GRAFOS2_COMMON_H
